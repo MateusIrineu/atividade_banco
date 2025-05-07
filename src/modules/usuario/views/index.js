@@ -3,7 +3,7 @@ import PromptSync from "prompt-sync";
 
 const input = PromptSync();
 
-class UsarioView{
+class UsuarioView{
     static async cadastrar(){
         const id_usuario = input("Digite o id do usuário: ");
         const nome = input("Digite o nome do usuário: ");
