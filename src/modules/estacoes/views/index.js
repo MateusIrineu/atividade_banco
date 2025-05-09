@@ -30,8 +30,7 @@ class EstacaoView{
 
     static async excluirEstacao(){
         const id_estacao = input("Digite o ID da estação: ");
-        const estacao = await EstacaoController.excluirEstacao(id_estacao);
-        console.table(estacao);
+        await EstacaoController.excluirEstacao(id_estacao);
     }
 }
 
