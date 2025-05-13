@@ -38,9 +38,9 @@ class ReservasModel{
         await client.query(consulta, dados);
     }
 
-    static async relatorioTotalHoras(hora_inicio, hora_fim){
-        const dados = [hora_inicio, hora_fim]
-        const consulta = `select sum(extract(epoch from (hora_fim - hora_inicio)))/3600 as total_horas from reservas where hora_inicio >= $ and hora_fim <= $2;`
+    static async relatorioTotalHoras(id_usuario){
+        const dados = [id_usuario]
+        const consulta = `select id_usuario, sum(extract(epoch from (hora_fim - hora_inicio)))/3600 as total_horas from reservas where id_usuario = $1 group by id_usuario;`
         const resultado = await client.query(consulta, dados);
         return resultado.rows;
     }
