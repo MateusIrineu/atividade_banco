@@ -18,7 +18,7 @@ class EstacaoModel{
 
     static async atualizarEstacao(id_estacao, identificador, localizacao, recursos){
         const dados = [id_estacao, identificador, localizacao, recursos]
-        const consulta = `update estacoes set identificador = $2, localizacao = $3, recursos = $4 where id_identificador = $1 returning *;`
+        const consulta = `update estacoes set identificador = $2, localizacao = $3, recursos = $4 where id_estacao = $1 returning *;`
         const resultado = await client.query(consulta, dados);
         return resultado.rows;
     }

@@ -7,6 +7,7 @@ class UsuarioController{
                 return console.error('Todos os campos devem ser preenchidos.');
             }
             const usuario = await UsuarioModel.cadastrar(id_usuario, nome, email, profissao);
+            return usuario
         } catch (error) {
             console.log('Erro ao criar usuario', error.message);
         }
@@ -45,7 +46,7 @@ class UsuarioController{
 
     static async excluirUsuario(email){
         try {
-            const usuario = UsuarioModel.buscarPorEmail(email);
+            const usuario = await UsuarioModel.buscarPorEmail(email);
             if(usuario.length === 0){
                 return console.error('Usuário não encontrado.');
             }

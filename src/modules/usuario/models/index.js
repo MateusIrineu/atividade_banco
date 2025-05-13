@@ -18,7 +18,7 @@ class UsuarioModel{
 
     static async atualizarUsuario(id_usuario, nome, email, profissao){
         const dados = [id_usuario, nome, email, profissao]
-        const consulta = `update usuarios set id_usuario = 1$, nome = $2, profissao = $4, where email = $3 retuning *;`
+        const consulta = `update usuarios set id_usuario = $1, nome = $2, profissao = $4 where email = $3 returning *;`
         const resultado = await client.query(consulta, dados);
         return resultado.rows;
     }
